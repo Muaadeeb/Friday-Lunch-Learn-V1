@@ -1,0 +1,66 @@
+﻿@page "/bindings/two-way-binding"
+
+<MudContainer>
+    <MudText Typo="Typo.h3">Two-Way Binding Examples</MudText>
+    <MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                        <MudItem class="ml-5">
+                            <MudText Typo="Typo.h5">Example 1: Binding to Text Input</MudText>
+                            <MudTextField @bind-Value="TextInput" Label="Enter Text" />
+                            <MudText Typo="Typo.h6">Input value: @TextInput</MudText>
+                        </MudItem>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                        <MudItem class="ml-5">
+                            <MudText Typo="Typo.h5">Example 2: Binding to Dropdown</MudText>
+                            <MudSelect @bind-Value="selectedFruit">
+                                @foreach (var fruit in fruits)
+                                {
+                                    <MudSelectItem Value="@fruit">@fruit</MudSelectItem>
+                                }
+                            </MudSelect>
+                            <MudText Typo="Typo.h6">Selected Fruit: @selectedFruit</MudText>
+                        </MudItem>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                        <MudItem class="ml-5">
+                            <MudText Typo="Typo.h5">Example 3: Binding to Checkbox</MudText>
+                            <MudCheckBox @bind-Checked="isCheckboxChecked" Label="Check me!" />
+                            <MudText Typo="Typo.h6">Checkbox checked: @isCheckboxChecked</MudText>
+                        </MudItem>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                        <MudItem class="ml-5">
+                            <MudText Typo="Typo.h5">Example 4 - Binding to TextBox via system event</MudText>
+                            Price-Input: <input type="double" @bind-value="NumberInput" @bind-value:event="oninput" />
+                            <MudText Typo="Typo.h6">Input Number: @NumberInput</MudText>
+                        </MudItem>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+
+    private string TextInput = "Initial Value";
+    private double NumberInput = 0.00;
+    private readonly List<string> fruits = new List<string> { "Apple", "Banana", "Orange", "Grapes" };
+    private string selectedFruit = null!;
+    private bool isCheckboxChecked = false;
+
+    protected override void OnInitialized()
+    {
+        TextInput = "Updated Value";
+    }
+}

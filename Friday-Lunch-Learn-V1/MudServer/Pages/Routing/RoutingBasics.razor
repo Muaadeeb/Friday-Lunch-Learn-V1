@@ -1,0 +1,57 @@
+﻿@page "/routing-basics"
+@page "/routing/routing-basics"
+@page "/routing-basics/{parameter1}"
+@page "/routing-basics/{parameter1:int}/{parameter2}"
+
+@inject NavigationManager NavigationManager
+
+<MudContainer>
+    <MudItem Style="margin-bottom: 10px;"><MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="LoadParameters">Load Parameters</MudButton></MudItem>
+    <MudItem Style="margin-bottom: 10px;"><MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="RouteNavigationUsingParameter1Int">Route using parameter 1 integer</MudButton></MudItem>
+    <MudItem Style="margin-bottom: 10px;"><MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="RouteNavigationUsingParameter1String">Route using parameter 1 string</MudButton></MudItem>
+    <MudItem Style="margin-bottom: 10px;"><MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="RouteNavigationUsingParameter2String">Route using parameter 1 and parameter 2</MudButton></MudItem>
+</MudContainer>
+
+<MudContainer>
+    <MudText Typo="Typo.h3">Displaying Loaded Parameters</MudText>
+    <MudItem><MudText>Loaded Parameter 1: @LoadedParameter1</MudText></MudItem>
+    <MudItem><MudText>Loaded Parameter 2: @LoadedParameter2</MudText></MudItem>
+</MudContainer>
+
+@code {
+    [Parameter]
+    public int Parameter1 { get; set; }
+    [Parameter]
+    public string Parameter2 { get; set; } = null!;
+
+    public string LoadedParameter1 { get; set; } = null!;
+    public string LoadedParameter2 { get; set; } = null!;
+
+    public int Parameter1Int { get; set; }
+    public string Parameter1String { get; set; } = "Param1String";
+    public string Parameter2String { get; set; } = "Param2String";
+
+
+    private void LoadParameters()
+    {
+        var absoluteUri = new Uri(NavigationManager.Uri);
+        var queryParam = System.Web.HttpUtility.ParseQueryString(absoluteUri.Query);
+        LoadedParameter1 = queryParam["Parameter1"]! ?? "null";
+        LoadedParameter2 = queryParam["Parameter2"]! ?? "null";
+    }
+
+    private void RouteNavigationUsingParameter1Int()
+    {
+        NavigationManager.NavigateTo($"routing-basics?parameter1={Parameter1Int}");
+    }
+
+    private void RouteNavigationUsingParameter1String()
+    {
+        NavigationManager.NavigateTo($"routing-basics?parameter1={Parameter1String}");
+    }
+
+    private void RouteNavigationUsingParameter2String()
+    {
+        NavigationManager.NavigateTo($"routing-basics?parameter1={Parameter1String}&parameter2={Parameter2String}");
+    }
+}

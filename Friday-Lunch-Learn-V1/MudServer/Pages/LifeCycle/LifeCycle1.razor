@@ -1,0 +1,24 @@
+﻿<MudText Typo="Typo.h3">Life Cycle 1 - @CountValue</MudText>
+
+@foreach (var item in EventType)
+{
+    @item
+    <hr />
+}
+
+@code {
+    [Parameter]
+    public int CountValue { get; set; }
+
+    List<string> EventType = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        EventType.Add("Life Cycle 1 - Child Component - OnInitialized was called");
+    }
+
+    protected override void OnParametersSet()
+    {
+        EventType.Add("Life Cycle 1 - Child Component - OnParametersSet was called");
+    }
+}

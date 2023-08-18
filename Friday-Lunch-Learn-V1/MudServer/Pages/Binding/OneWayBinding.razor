@@ -1,0 +1,28 @@
+﻿@page "/bindings/one-way-binding"
+
+<MudContainer>
+    <MudText Typo="Typo.h3">One-Way Binding Examples</MudText>
+    <MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                        <MudItem class="ml-5">
+                            <MudText Typo="Typo.h5">Example 1: Binding to Text Input</MudText>
+                            <MudTextField Label="One-way binding" Value="@OneWayBindingValue" />
+                        </MudItem>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private string OneWayBindingValue { get; set; } = "Initial Value";
+
+    protected override void OnInitialized()
+    {
+        OneWayBindingValue = "Updated Value";
+    }
+}
