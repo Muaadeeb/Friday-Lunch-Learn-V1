@@ -1,0 +1,17 @@
+﻿<MudText Typo="Typo.h3">Child2 Component</MudText>
+<MudText>@ChildParameter - ** from Child2**</MudText>
+<MudButton OnClick="ModifyAndReturnData">Modify and Return Data</MudButton>
+
+@code {
+    [Parameter]
+    public string ChildParameter { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> OnDataChanged { get; set; }
+
+    private async Task ModifyAndReturnData()
+    {
+        var modifiedData = ChildParameter + " with appended data from grandchild";
+        await OnDataChanged.InvokeAsync(modifiedData);
+    }
+}

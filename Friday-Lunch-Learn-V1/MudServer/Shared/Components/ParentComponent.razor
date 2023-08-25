@@ -1,0 +1,7 @@
+﻿<MudText Typo="Typo.h3">Parent Component</MudText>
+<ChildComponent ChildParameter="@ParentParameter" />
+
+@code {
+    [Parameter]
+    public string ParentParameter { get; set; } = "";
+}

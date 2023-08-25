@@ -1,0 +1,16 @@
+﻿@page "/error-boundry-example"
+
+<MudText Typo="Typo.h3">Error Boundary Example </MudText>
+
+<ErrorBoundary>
+    <ChildContent>
+        <Counter/>
+    </ChildContent>
+    <ErrorContent>
+        <p class="errorUI">😈 A rotten gremlin got us. Sorry!</p>
+    </ErrorContent>
+</ErrorBoundary>
+
+@code {
+
+}

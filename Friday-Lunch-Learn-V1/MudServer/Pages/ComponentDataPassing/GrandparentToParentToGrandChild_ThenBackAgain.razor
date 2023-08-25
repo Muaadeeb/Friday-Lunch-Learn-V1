@@ -1,0 +1,15 @@
+﻿@page "/grandparent-to-parent-to-grandchild-then-back-again"
+
+<MudText Typo="Typo.h3">Grandparent Page</MudText>
+<Parent2Component ParentParameter="@grandParentData" OnDataChanged="DataChanged"/>
+
+<MudText>@grandParentData - **from grandparent**</MudText>
+
+@code {
+    private string grandParentData = "Data from Grandparent";
+
+    private void DataChanged(string newData)
+    {
+        grandParentData = newData;
+    }
+}

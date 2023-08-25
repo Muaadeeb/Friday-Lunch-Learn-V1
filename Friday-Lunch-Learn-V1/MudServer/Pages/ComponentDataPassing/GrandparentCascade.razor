@@ -1,0 +1,15 @@
+﻿@page "/grandparent-cascade"
+
+<MudText Typo="Typo.h3">Grand Parent Page</MudText>
+
+<CascadingValue Value="@grandParentData">
+    <CascadingValue Value="@grandParentNumber">
+        <Parent3Component/>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    private string grandParentData = "Data from Grandparent";
+    private int grandParentNumber = 12345;
+    // private string value2 = "Data from Grandparent";  //TODO: More than one value in cascading...??  Multiple tags...
+}

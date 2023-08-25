@@ -19,7 +19,7 @@ namespace MudServer.Data
 
         public string Publisher { get; set; } = null!;
 
-        public string ISBN { get; set; }
+        public string ISBN { get; set; } = null!;
 
         [Range(1, 10, ErrorMessage = "Rate between 1 (low) and 10 (high)")]
         public int ReviewRating { get; set; }

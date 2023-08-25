@@ -1,0 +1,17 @@
+﻿<MudText Typo="Typo.h3">Card Content Render Fragment</MudText>
+
+<div>
+    <div>
+        @Title - My Title from Render Fragment
+    </div>
+    <br />
+    <div>
+        @CardContent - My content from Render Fragment
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public string Title { get; set; } = "Default Title";
+    [Parameter] public RenderFragment? CardContent { get; set; }
+}

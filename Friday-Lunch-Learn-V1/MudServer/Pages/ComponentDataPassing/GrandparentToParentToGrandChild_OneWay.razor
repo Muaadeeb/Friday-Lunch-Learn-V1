@@ -1,0 +1,8 @@
+﻿@page "/grandparent-to-parent-to-grandchild-one-way"
+
+<MudText Typo="Typo.h3">Grandparent Component</MudText>
+<ParentComponent ParentParameter="@GrandparentData" />
+
+@code {
+    public string GrandparentData { get; set; } = "Data from Grandparent Component";
+}

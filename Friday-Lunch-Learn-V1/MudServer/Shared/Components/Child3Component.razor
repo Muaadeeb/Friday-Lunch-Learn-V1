@@ -1,0 +1,11 @@
+﻿<MudText Typo="Typo.h3">Child 3 Component</MudText>
+<MudText>@CascadedData1</MudText>
+<MudText>@CascadedData2</MudText>
+
+@code {
+    [CascadingParameter]
+    public string CascadedData1 { get; set; } = null!;
+
+    [CascadingParameter]
+    public int CascadedData2 { get; set; }
+}

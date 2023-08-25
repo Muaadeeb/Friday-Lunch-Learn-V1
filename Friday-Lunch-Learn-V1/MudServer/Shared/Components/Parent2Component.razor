@@ -1,0 +1,15 @@
+﻿<MudText Typo="Typo.h3">Parent2 Component</MudText>
+<Child2Component ChildParameter="@ParentParameter" OnDataChanged="DataChanged"/>
+
+@code {
+    [Parameter]
+    public string ParentParameter { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<string> OnDataChanged { get; set; }
+
+    private async Task DataChanged(string newData)
+    {
+        await OnDataChanged.InvokeAsync(newData);
+    }
+}

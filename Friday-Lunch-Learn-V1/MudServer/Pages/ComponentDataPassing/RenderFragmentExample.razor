@@ -1,0 +1,25 @@
+﻿@page "/render-fragment-example"
+<MudText Typo="Typo.h3">Render Fragment Example</MudText>
+
+<CardContentRenderFragment Title="My Custom Card">
+    
+    <CardContent>
+        <p>This is custom content inside the card!</p>
+        <MudButton @onclick="ButtonClick">Click Me</MudButton>
+    </CardContent>
+</CardContentRenderFragment>
+
+@if (ShowAlert)
+{
+    <MudAlert Severity="Severity.Success" Dense="true" Class="my-2">The button was successfully rendered!</MudAlert>
+}
+
+@code {
+
+    private bool ShowAlert = false;
+
+    private void ButtonClick()
+    {
+        ShowAlert = !ShowAlert;
+    }
+}
